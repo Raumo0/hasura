@@ -40,18 +40,22 @@ All commands must be executed in the ```./hasura``` directory or initialized a n
 
 ## Dev
 
-Build or rebuild services:
+Build or rebuild services for both development and production environments:
 ```
-docker-compose -f docker-compose.yaml -f docker-compose.dev.yaml build
+make build
 ```
-Builds, (re)creates, starts, and attaches to containers for a service:
+Start development services in detached mode (background):
 ```
-docker-compose -f docker-compose.yaml -f docker-compose.dev.yaml up -d
+make start
+```
+Start development services in attached mode with logs in the console:
+```
+make start-logs
 ```
 
-If you want to run hasura for dev, but no migrations:
+Start Hasura for development without applying migrations:
 ```
-docker-compose -f docker-compose.yaml -f docker-compose.dev.reup.yaml up -d hasura
+make start-no-migration
 ```
 
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) Danger zone!
@@ -59,16 +63,14 @@ docker-compose -f docker-compose.yaml -f docker-compose.dev.reup.yaml up -d hasu
 Stops containers and removes containers, networks, volumes, and images
 created by `up`.
 
-* Not for production!
-
+* Not for production! Stop and remove containers, networks, volumes, and images for development:
 ```diff
-- docker-compose -f docker-compose.yaml -f docker-compose.dev.yaml down -v
+- make clean
 ```
 
 ## Prod
 
-Just builds, (re)creates, starts, and attaches to containers for a service:
-
+Start production services in detached mode. Just builds, (re)creates, starts, and attaches to containers for a service:
 ```
-docker-compose -f docker-compose.yaml -f docker-compose.prod.yaml up -d
+make prod-start
 ```
