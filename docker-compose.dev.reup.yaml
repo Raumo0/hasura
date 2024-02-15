@@ -1,0 +1,6 @@
+version: '3.6'
+services:
+  hasura:
+    image: hasura/graphql-engine:v2.37.0-ce.cli-migrations-v3.ubuntu.arm64
+    environment:
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # set to "false" to disable console
